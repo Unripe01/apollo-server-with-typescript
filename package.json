@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --respawn src/index.ts",
     "start": "node build/src/index.js",
     "codegen": "graphql-codegen --config codegen.yml",
     "test": "echo \"Error: no test specified\" && exit 1",
