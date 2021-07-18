@@ -5,6 +5,7 @@ import {addResolversToSchema} from '@graphql-tools/schema';
 import {join} from 'path';
 import {Resolvers} from './types/generated/graphql';
 import {Context} from './types/context';
+
 // サンプルデータの定義
 const books = [
   {
@@ -67,6 +68,11 @@ const server = new ApolloServer({
   debug: true, // エラーレスポンスにスタックトレースを含ませない、開発環境ではtrueにした方が分析が捗りそう
 });
 
-server.listen({port: 4000}).then(({url}) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+(async () => {
+  try {
+    const web = await server.listen({port: 4000});
+    console.log(`🚀  Server ready at ${web.url}`);
+  } catch (error) {
+    console.log(error);
+  }
+})();
